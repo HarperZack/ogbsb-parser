@@ -9,9 +9,9 @@ class BaseSauce:
         self.name = name
 
         if consistency.lower() == 'all':
-            self.consistency = ['wet', 'buttered', 'dry']
+            self.consistency = ['Wet', 'Buttered', 'Dry']
         if consistency.lower() in self.sauce_consistencies:
-            self.consistency = consistency
+            self.consistency = consistency.capitalize()
 
 
 def search_sauce_list(name, list):

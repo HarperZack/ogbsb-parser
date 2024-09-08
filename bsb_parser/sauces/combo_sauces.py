@@ -1,4 +1,4 @@
-import base_sauce
+from bsb_parser.sauces import base_sauce
 
 
 class ComboSauce(base_sauce.BaseSauce):
@@ -37,7 +37,8 @@ class ComboSauce(base_sauce.BaseSauce):
               f'Consistency: {self.consistency}\n'
               f'Category: {self.category}\n'
               f'Description: {self.description}\n'
-              f'Riffed Sauces: {self.riffed_sauces}')
+              f'Riffed Sauces: {self.riffed_sauces}\n'
+              f'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
 
 
 def create_combo_sauces_list():

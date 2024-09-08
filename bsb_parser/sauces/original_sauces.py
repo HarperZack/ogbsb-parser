@@ -1,5 +1,4 @@
-from pprint import pprint as pp
-import base_sauce
+from bsb_parser.sauces import base_sauce
 
 
 class OriginalSauce(base_sauce.BaseSauce):
@@ -8,7 +7,8 @@ class OriginalSauce(base_sauce.BaseSauce):
 
     def show_sauce_stats(self):
         print(f'Name: {self.name}\n'
-              f'Consistency: {self.consistency}')
+              f'Consistency: {self.consistency}\n'
+              f'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
 
 
 def create_original_sauces_list():
