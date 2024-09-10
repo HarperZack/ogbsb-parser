@@ -16,10 +16,10 @@ class BaseSauce:
 
 def search_sauce_list(name, list):
     for sauce in list:
-        if '\'' in sauce.name.lower():
-            parsed_name = sauce.name.lower().replace('\'', '')
-            if parsed_name.lower() == name.lower():
+        if '\'' in sauce.name:
+            parsed_name = sauce.name.replace('\'', '')
+            if parsed_name == name:
                 return sauce
     for sauce in list:
-        if sauce.name.lower() == name.lower():
+        if sauce.name == name:
             return sauce
