@@ -23,12 +23,9 @@ class ComboSauce(base_sauce.BaseSauce):
             self.category = None
 
         self.description = description
-
         self.riffed_sauces = riffed_sauces
-        if self.riffed_sauces is not None:
-            self.gather_riffed_sauces()
 
-    def gather_riffed_sauces(self):
+    def gather_riffed_sauces(self, sauce):
         pass
 
     def show_sauce_stats(self):
@@ -42,15 +39,19 @@ class ComboSauce(base_sauce.BaseSauce):
 
 def create_combo_sauces_list():
     ace_boogie = ComboSauce(sauce_names.ACE_BOOGIE, 'buttered', 'award',
-                            'Black Magic, Butter, Dry Ranch', ['black_magic', 'ranch'])
+                            'Black Magic, Butter, Dry Ranch', [sauce_names.BLACK_MAGIC, sauce_names.RANCH])
     aint_my_faulks = ComboSauce(sauce_names.AINT_MY_FAULKS, ['buttered', 'dry'], 'new',
-                                'Butter, Dry BBQ, Dry Carlic, Dry Ranch', ['bbq', 'garlic', 'ranch'])
+                                'Butter, Dry BBQ, Dry Carlic, Dry Ranch', [sauce_names.BBQ, sauce_names.GARLIC_RANCH])
     ashy_larry = ComboSauce(sauce_names.ASHY_LARRY, 'dry', None,
-                            'Local Legend, Our Driest Seasoning', ['local legend'])
-    bad = ComboSauce(sauce_names.BAD)
-    baby_blues = ComboSauce(sauce_names.BABY_BLUES)
-    big_easy = ComboSauce(sauce_names.BIG_EASY)
-    big_fine_woman = ComboSauce(sauce_names.BIGFINEWOMAN2000)
+                            'Local Legend, Our Driest Seasoning', None)
+    bad = ComboSauce(sauce_names.BAD, 'dry', 'hot',
+                     'Buttered Atomic Dust', None)
+    baby_blues = ComboSauce(sauce_names.BABY_BLUES, 'all', 'spicy',
+                            'Blue Cheese, Frank\'s, Cayenne', None)
+    big_easy = ComboSauce(sauce_names.BIG_EASY, 'all', 'spicy',
+                          'BSB\'s Louisana Licker', None)
+    big_fine_woman = ComboSauce(sauce_names.BIGFINEWOMAN2000, 'all', 'sure',
+                                'Dark BBQ and Black Magic', [sauce_names.DARK_BBQ, sauce_names.BLACK_MAGIC])
     big_picture = ComboSauce(sauce_names.THE_BIG_PICTURE)
     big_sexy = ComboSauce(sauce_names.BIG_SEXY)
     black_and_gold = ComboSauce(sauce_names.BLACK_AND_GOLD)
@@ -74,6 +75,7 @@ def create_combo_sauces_list():
     cousin_larry = ComboSauce(sauce_names.COUSIN_LARRY)
     crazy_joes = ComboSauce(sauce_names.CRAZY_JOES)
     d_and_a = ComboSauce(sauce_names.D_AND_A)
+    """
     dusty_roads = ComboSauce(sauce_names.DUSTY_ROADS)
     escobar_season = ComboSauce(sauce_names.ESCOBAR_SEASON)
     eye_of_the_tiger = ComboSauce(sauce_names.EYE_OF_THE_TIGER)
@@ -166,7 +168,7 @@ def create_combo_sauces_list():
     wink_and_gun = ComboSauce(sauce_names.WINK_AND_GUN)
     zach_attack = ComboSauce(sauce_names.ZACH_ATTACK)
     ziggy_stardust = ComboSauce(sauce_names.ZIGGY_STARDUST)
-
+"""
     results = [
         ace_boogie,
         aint_my_faulks,
