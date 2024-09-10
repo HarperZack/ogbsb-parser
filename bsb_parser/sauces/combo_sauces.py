@@ -136,10 +136,36 @@ def create_combo_sauces_list():
     ringside_rosie = ComboSauce(sauce_names.RINGSIDE_ROSIE)
     seasoned_vet = ComboSauce(sauce_names.RINGSIDE_ROSIE)
     shaolin_strut = ComboSauce(sauce_names.SHAOLIN_STRUT)
-
-
-
-
+    sheltons_shooters = ComboSauce(sauce_names.SHELTONS_SHOOTERS)
+    showtime = ComboSauce(sauce_names.SHOWTIME)
+    steel_city = ComboSauce(sauce_names.STEEL_CITY)
+    steiner_recliner = ComboSauce(sauce_names.STEINER_RECLINER)
+    stickiest = ComboSauce(sauce_names.STICKIEST_OF_THE_ICKY)
+    still_flossin = ComboSauce(sauce_names.STILL_FLOSSIN)
+    stupid_rookie = ComboSauce(sauce_names.STUPID_ROOKIE)
+    sunday_funday = ComboSauce(sauce_names.SUNDAY_FUNDAY)
+    superfly_tnt = ComboSauce(sauce_names.SUPERFLY_TNT)
+    sweet_chin_music = ComboSauce(sauce_names.SWEET_CHIN_MUSIC)
+    sweet_jones = ComboSauce(sauce_names.SWEET_JONES)
+    sweet_lou = ComboSauce(sauce_names.SWEET_LOU)
+    talk_of_bf = ComboSauce(sauce_names.TALK_OF_BEAVER_FALLS)
+    three_rivers = ComboSauce(sauce_names.THREE_RIVERS)
+    thunderlips = ComboSauce(sauce_names.THUNDERLIPS)
+    too_easy = ComboSauce(sauce_names.TOO_EASY)
+    tommy_buns = ComboSauce(sauce_names.TOMMY_BUNS)
+    trash_talk = ComboSauce(sauce_names.TRASH_TALK)
+    tremendous_slouch = ComboSauce(sauce_names.TREMENDOUS_SLOUCH)
+    troy = ComboSauce(sauce_names.TROY)
+    uncle_nicks = ComboSauce(sauce_names.UNCLE_NICKS)
+    uncle_ricos = ComboSauce(sauce_names.UNCLE_RICOS)
+    velvet_jones = ComboSauce(sauce_names.VELVET_JONES)
+    walk_of_bf = ComboSauce(sauce_names.WALK_OF_BEAVER_FALLS)
+    walk_of_the_doggs = ComboSauce(sauce_names.WALK_OF_THE_DOGGS)
+    westview_connection = ComboSauce(sauce_names.WESTVIEW_CONNECTION)
+    william_henry_harrison = ComboSauce(sauce_names.WILLIAM_HENRY_HARRISON)
+    wink_and_gun = ComboSauce(sauce_names.WINK_AND_GUN)
+    zach_attack = ComboSauce(sauce_names.ZACH_ATTACK)
+    ziggy_stardust = ComboSauce(sauce_names.ZIGGY_STARDUST)
 
     results = [
         ace_boogie,
