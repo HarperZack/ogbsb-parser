@@ -1,10 +1,15 @@
 from bsb_parser.sauces import base_sauce, sauce_names
-from bsb_parser.sauces.sauce_names import LIL_DAYNE
-
 
 class ComboSauce(base_sauce.BaseSauce):
     def __init__(self, name, consistency, category, description, riffed_sauces):
-        super().__init__(name, consistency='all')
+        self.name = name
+        self.consistency = list()
+
+        super().__init__(name, consistency)
+        if consistency == 'wet':
+            self.consistency = consistency.capitalize()
+
+        self.consistency = consistency
         if category == 'hot':
             self.category = 'Hot 🔥'
         if category == 'award':
@@ -42,8 +47,8 @@ class ComboSauce(base_sauce.BaseSauce):
 def create_combo_sauces_list():
     ace_boogie = ComboSauce(sauce_names.ACE_BOOGIE, 'buttered', 'classic',
                             'Black Magic, Butter, Dry Ranch', [sauce_names.BLACK_MAGIC, sauce_names.RANCH])
-    aint_my_faulks = ComboSauce(sauce_names.AINT_MY_FAULKS, ['buttered', 'dry'], 'new',
-                                'Butter, Dry BBQ, Dry Carlic, Dry Ranch', [sauce_names.BBQ, sauce_names.GARLIC_RANCH])
+    aint_my_faulks = ComboSauce(sauce_names.AINT_MY_FAULKS, 'buttered', 'new',
+                                'Butter, Dry BBQ, Dry Garlic, Dry Ranch', [sauce_names.BBQ, sauce_names.GARLIC_RANCH])
     ashy_larry = ComboSauce(sauce_names.ASHY_LARRY, 'dry', None,
                             'Local Legend, Our Driest Seasoning', None)
     bad = ComboSauce(sauce_names.BAD, 'dry', 'hot',
@@ -74,7 +79,7 @@ def create_combo_sauces_list():
                             'Mild Buffalo, Blue Cheese, and Parm', None)
     buc_nasty = ComboSauce(sauce_names.BUC_NASTY, 'wet', 'award',
                            'Honey Buffalo BBQ with Cajun', [sauce_names.HONEY_BBQ, sauce_names.HOT_BUFFALO_CAJUN])
-    bugg_wings = ComboSauce(sauce_names.BUGG_WINGS, ['buttered'], 'new',
+    bugg_wings = ComboSauce(sauce_names.BUGG_WINGS, 'buttered', 'new',
                             'Buttered honey with a chili lime molasses rub', [sauce_names.ESCOBAR_SEASON])
     butter_ss = ComboSauce(sauce_names.BUTTER_SS, 'buttered', None,
                            'Buttered Signature Seasoned', None)
@@ -93,7 +98,7 @@ def create_combo_sauces_list():
     coffee_black = ComboSauce(sauce_names.COFFEE_BLACK, 'buttered', 'sure',
                               'Buttered Blackened coffee rub', None)
     cool_runnings = ComboSauce(sauce_names.COOL_RUNNINGS, 'wet', 'classic',
-                               'Jamacian Jerk, Ranch', [sauce_names.JAMACIAN_JERK, sauce_names.RANCH])
+                               'Jamacian Jerk, Ranch', [sauce_names.JAMAICAN_JERK, sauce_names.RANCH])
     cousin_larry = ComboSauce(sauce_names.COUSIN_LARRY, 'buttered', None,
                               'Buttered Ashy Larry', [sauce_names.ASHY_LARRY])
     crazy_joes = ComboSauce(sauce_names.CRAZY_JOES, 'wet', 'new',
@@ -144,9 +149,9 @@ def create_combo_sauces_list():
                              'Sweet Hot Chili Ranch', [sauce_names.RANCH])
     jaguar_paw = ComboSauce(sauce_names.JAGUAR_PAW, 'wet', 'new',
                             'Mean Green with a Chili Lime Cayenne Rub', [sauce_names.ESCOBAR_SEASON, sauce_names.MEAN_JOE_GREEN])
-    jamacian_frank = ComboSauce(sauce_names.JAMACIAN_FRANK, 'wet', 'hot',
-                                'HOT Jamacian Jerk', [sauce_names.JAMACIAN_JERK])
-    jamacian_jerk = ComboSauce(sauce_names.JAMACIAN_JERK, 'buttered', 'classic',
+    jamaican_frank = ComboSauce(sauce_names.JAMAICAN_FRANK, 'wet', 'hot',
+                                'HOT Jamacian Jerk', [sauce_names.JAMAICAN_JERK])
+    jamaican_jerk = ComboSauce(sauce_names.JAMAICAN_JERK, 'buttered', 'classic',
                                'Butter and Jerk', None)
     jimmy_jump = ComboSauce(sauce_names.JIMMY_JUMP, 'dry', None,
                             'Frank White Dry Jerk Seasoning', [sauce_names.FRANK_WHITE])
@@ -166,7 +171,7 @@ def create_combo_sauces_list():
                             'Buttered Honey Sweet Seasoning', None)
     lil_dayne = ComboSauce(sauce_names.LIL_DAYNE, 'wet', 'new',
                            'Honey Gold BBQ with a tangy seasoning', [sauce_names.GOLD, sauce_names.BBQ])
-    low_ball_larry = ComboSauce(sauce_names.LOW_BALL_LARRY, 'wet', 'new',
+    long_ball_larry = ComboSauce(sauce_names.LONG_BALL_LARRY, 'wet', 'new',
                                 'Signature Hot Wings with Lemon Pepper', [sauce_names.BOBS_SIGNATURE_HOT, sauce_names.LEMON_PEPPER])
     macho_man = ComboSauce(sauce_names.MACHO_MAN, 'wet', 'hot',
                            'Extra Hot Magic Man', [sauce_names.MAGIC_MAN])
@@ -205,7 +210,7 @@ def create_combo_sauces_list():
     ole_school = ComboSauce(sauce_names.OLE_SCHOOL, 'wet', None,
                             'BSB\'s Signature Seasoned Medium Sauce', None)
     oxs = ComboSauce(sauce_names.OXS, 'dry', 'spicy',
-                     'BBQ Jerk', [sauce_names.JAMACIAN_JERK, sauce_names.BBQ])
+                     'BBQ Jerk', [sauce_names.JAMAICAN_JERK, sauce_names.BBQ])
     pigeon_wings = ComboSauce(sauce_names.PIGEON_WINGS, 'wet', 'classic',
                               'Napoleon with Garlic and Parmesan Cheese', [sauce_names.NAPOLEON])
     playmaker = ComboSauce(sauce_names.PLAYMAKER, 'buttered', 'sure',
@@ -243,7 +248,7 @@ def create_combo_sauces_list():
     sunday_funday = ComboSauce(sauce_names.SUNDAY_FUNDAY, 'buttered', 'new',
                                'Buttered dry ranch', [sauce_names.RANCH])
     superfly_tnt = ComboSauce(sauce_names.SUPERFLY_TNT, 'wet', 'hot',
-                              'Hot Jamaican Jerk and Ranch Dressing', [sauce_names.JAMACIAN_FRANK, sauce_names.RANCH])
+                              'Hot Jamaican Jerk and Ranch Dressing', [sauce_names.JAMAICAN_FRANK, sauce_names.RANCH])
     sweet_chin_music = ComboSauce(sauce_names.SWEET_CHIN_MUSIC, 'buttered', 'hot',
                                   'Buttered Honey with Hot Black Magic', [sauce_names.BLACK_MAGIC])
     sweet_jones = ComboSauce(sauce_names.SWEET_JONES, 'wet', 'new',
@@ -259,7 +264,7 @@ def create_combo_sauces_list():
     too_easy = ComboSauce(sauce_names.TOO_EASY, 'wet', None,
                           'Salt, Pepper, and Hot Sauce', [sauce_names.FRANKS_RED_HOT])
     tommy_buns = ComboSauce(sauce_names.TOMMY_BUNS, 'buttered', 'new',
-                            'Jamaican Jerk with Chili Lime', [sauce_names.JAMACIAN_JERK, sauce_names.ESCOBAR_SEASON])
+                            'Jamaican Jerk with Chili Lime', [sauce_names.JAMAICAN_JERK, sauce_names.ESCOBAR_SEASON])
     trash_talk = ComboSauce(sauce_names.TRASH_TALK, 'wet', 'new',
                             'Chains adding Black Magic', [sauce_names.CHAINS, sauce_names.BLACK_MAGIC])
     tremendous_slouch = ComboSauce(sauce_names.TREMENDOUS_SLOUCH, 'dry', 'hot',
@@ -274,12 +279,12 @@ def create_combo_sauces_list():
                               'Buttered Honey Escobar Season', [sauce_names.ESCOBAR_SEASON])
     walk_of_bf = ComboSauce(sauce_names.WALK_OF_BEAVER_FALLS, 'wet', 'hot',
                             'Think Talk of Beaver Falls but HOTTER', [sauce_names.TALK_OF_BEAVER_FALLS])
-    walk_of_the_doggs = ComboSauce(sauce_names.WALK_OF_THE_DOGGS, 'wet', 'new',
+    walk_these_doggs = ComboSauce(sauce_names.WALK_THESE_DOGGS, 'wet', 'new',
                                    'Pookie subbing Walk of Beaver Falls', [sauce_names.POOKIE, sauce_names.PIGEON_WINGS])
     westview_connection = ComboSauce(sauce_names.WESTVIEW_CONNECTION, 'wet', 'classic',
                                      'BSB\'s Wet Cajun Garlic with a Green Jalapeno Base', [sauce_names.CAJUN_GARLIC])
     william_henry_harrison = ComboSauce(sauce_names.WILLIAM_HENRY_HARRISON, 'wet', None,
-                                        'Jamaican Jerk and Parmesian Cheese', [sauce_names.JAMACIAN_JERK])
+                                        'Jamaican Jerk and Parmesian Cheese', [sauce_names.JAMAICAN_JERK])
     wink_and_gun = ComboSauce(sauce_names.WINK_AND_GUN, 'wet', None,
                               'Hot, Sweet Ranch', [sauce_names.RANCH])
     zach_attack = ComboSauce(sauce_names.ZACH_ATTACK, 'wet', 'new',
@@ -317,10 +322,100 @@ def create_combo_sauces_list():
         cool_runnings,
         cousin_larry,
         crazy_joes,
-        d_and_a
-
-
-
+        d_and_a,
+        dusty_roads,
+        escobar_season,
+        eye_of_the_tiger,
+        flaming_flamingo,
+        flossin_season,
+        fly_gators,
+        fools_gold,
+        foxy_brown,
+        frank_sinatra,
+        frank_white,
+        frankie_valli,
+        furios,
+        g_black,
+        gamechanger,
+        general_tsos,
+        gold_fire,
+        good_riddance,
+        gung_ho,
+        harlem_heat,
+        harlem_shake,
+        honey_bunny,
+        jaguar_paw,
+        jamaican_frank,
+        jamaican_jerk,
+        jimmy_jump,
+        jive_turkey,
+        king_joffy_joe,
+        kurupt_cajun,
+        lady_luck,
+        lavish_habits,
+        lbj2la,
+        lil_broski,
+        lil_dayne,
+        long_ball_larry,
+        macho_man,
+        magic_man,
+        mapletron,
+        mean_joe_green,
+        mister_cs,
+        most_interesting,
+        mouse_trap,
+        mr_dynamite,
+        mr_nice,
+        mr_northside,
+        mr_pipp,
+        ms_parker,
+        napoleon,
+        napoleon_cajun,
+        napoleon_complex,
+        napoleon_dynamite,
+        napoleon_garlic,
+        ole_school,
+        oxs,
+        pigeon_wings,
+        playmaker,
+        polish_hill_strangler,
+        pookie,
+        primadonna,
+        primetime,
+        real_dill,
+        ringside_rosie,
+        seasoned_vet,
+        shaolin_strut,
+        sheltons_shooters,
+        showtime,
+        steel_city,
+        steiner_recliner,
+        stickiest,
+        still_flossin,
+        stupid_rookie,
+        sunday_funday,
+        superfly_tnt,
+        sweet_chin_music,
+        sweet_jones,
+        sweet_lou,
+        talk_of_bf,
+        three_rivers,
+        thunderlips,
+        too_easy,
+        tommy_buns,
+        trash_talk,
+        tremendous_slouch,
+        troy,
+        uncle_nicks,
+        uncle_ricos,
+        velvet_jones,
+        walk_of_bf,
+        walk_these_doggs,
+        westview_connection,
+        william_henry_harrison,
+        wink_and_gun,
+        zach_attack,
+        ziggy_stardust
     ]
 
     return results
