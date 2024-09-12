@@ -1,4 +1,6 @@
 from bsb_parser.sauces import base_sauce, sauce_names
+from bsb_parser.sauces.sauce_names import LIL_DAYNE
+
 
 class ComboSauce(base_sauce.BaseSauce):
     def __init__(self, name, consistency, category, description, riffed_sauces):
@@ -101,7 +103,7 @@ def create_combo_sauces_list():
     dusty_roads = ComboSauce(sauce_names.DUSTY_ROADS, 'dry', None,
                              'Pepper and Celery Salt', None)
     escobar_season = ComboSauce(sauce_names.ESCOBAR_SEASON, 'dry', 'new',
-                                'Chili Lime seasoning')
+                                'Chili Lime seasoning', None)
     eye_of_the_tiger = ComboSauce(sauce_names.EYE_OF_THE_TIGER, 'wet', 'pop',
                                   'Talk of Beaver Falls add Ranch', [sauce_names.TALK_OF_BEAVER_FALLS, sauce_names.RANCH])
     flaming_flamingo = ComboSauce(sauce_names.FLAMING_FLAMINGO, 'wet', 'pop',
@@ -203,7 +205,7 @@ def create_combo_sauces_list():
     ole_school = ComboSauce(sauce_names.OLE_SCHOOL, 'wet', None,
                             'BSB\'s Signature Seasoned Medium Sauce', None)
     oxs = ComboSauce(sauce_names.OXS, 'dry', 'spicy',
-                     'BBQ Jerk', sauce_names.JAMACIAN_JERK, sauce_names.BBQ)
+                     'BBQ Jerk', [sauce_names.JAMACIAN_JERK, sauce_names.BBQ])
     pigeon_wings = ComboSauce(sauce_names.PIGEON_WINGS, 'wet', 'classic',
                               'Napoleon with Garlic and Parmesan Cheese', [sauce_names.NAPOLEON])
     playmaker = ComboSauce(sauce_names.PLAYMAKER, 'buttered', 'sure',
@@ -213,42 +215,77 @@ def create_combo_sauces_list():
     pookie = ComboSauce(sauce_names.POOKIE, 'wet', 'classic',
                         'Talk of Beaver Falls and Pigeon', [sauce_names.TALK_OF_BEAVER_FALLS, sauce_names.PIGEON_WINGS])
     primadonna = ComboSauce(sauce_names.PRIMADONNA, 'wet', 'sure',
-                            '')
-    primetime = ComboSauce(sauce_names.PRIMETIME)
-    real_dill = ComboSauce(sauce_names.REAL_DILL)
-    ringside_rosie = ComboSauce(sauce_names.RINGSIDE_ROSIE)
-    seasoned_vet = ComboSauce(sauce_names.RINGSIDE_ROSIE)
-    shaolin_strut = ComboSauce(sauce_names.SHAOLIN_STRUT)
-    sheltons_shooters = ComboSauce(sauce_names.SHELTONS_SHOOTERS)
-    showtime = ComboSauce(sauce_names.SHOWTIME)
-    steel_city = ComboSauce(sauce_names.STEEL_CITY)
-    steiner_recliner = ComboSauce(sauce_names.STEINER_RECLINER)
-    stickiest = ComboSauce(sauce_names.STICKIEST_OF_THE_ICKY)
-    still_flossin = ComboSauce(sauce_names.STILL_FLOSSIN)
-    stupid_rookie = ComboSauce(sauce_names.STUPID_ROOKIE)
-    sunday_funday = ComboSauce(sauce_names.SUNDAY_FUNDAY)
-    superfly_tnt = ComboSauce(sauce_names.SUPERFLY_TNT)
-    sweet_chin_music = ComboSauce(sauce_names.SWEET_CHIN_MUSIC)
-    sweet_jones = ComboSauce(sauce_names.SWEET_JONES)
-    sweet_lou = ComboSauce(sauce_names.SWEET_LOU)
-    talk_of_bf = ComboSauce(sauce_names.TALK_OF_BEAVER_FALLS)
-    three_rivers = ComboSauce(sauce_names.THREE_RIVERS)
-    thunderlips = ComboSauce(sauce_names.THUNDERLIPS)
-    too_easy = ComboSauce(sauce_names.TOO_EASY)
-    tommy_buns = ComboSauce(sauce_names.TOMMY_BUNS)
-    trash_talk = ComboSauce(sauce_names.TRASH_TALK)
-    tremendous_slouch = ComboSauce(sauce_names.TREMENDOUS_SLOUCH)
-    troy = ComboSauce(sauce_names.TROY)
-    uncle_nicks = ComboSauce(sauce_names.UNCLE_NICKS)
-    uncle_ricos = ComboSauce(sauce_names.UNCLE_RICOS)
-    velvet_jones = ComboSauce(sauce_names.VELVET_JONES)
-    walk_of_bf = ComboSauce(sauce_names.WALK_OF_BEAVER_FALLS)
-    walk_of_the_doggs = ComboSauce(sauce_names.WALK_OF_THE_DOGGS)
-    westview_connection = ComboSauce(sauce_names.WESTVIEW_CONNECTION)
-    william_henry_harrison = ComboSauce(sauce_names.WILLIAM_HENRY_HARRISON)
-    wink_and_gun = ComboSauce(sauce_names.WINK_AND_GUN)
-    zach_attack = ComboSauce(sauce_names.ZACH_ATTACK)
-    ziggy_stardust = ComboSauce(sauce_names.ZIGGY_STARDUST)
+                            'Ranch Buffalo Mildly Seasoned', [sauce_names.RANCH])
+    primetime = ComboSauce(sauce_names.PRIMETIME, 'classic', 'wet',
+                           'Sweet Hot Garlic Golden BBQ', [sauce_names.HOT_GARLIC, sauce_names.GOLD, sauce_names.BBQ])
+    real_dill = ComboSauce(sauce_names.REAL_DILL, 'dry', 'new',
+                           'Our first venture with Dill!', None)
+    ringside_rosie = ComboSauce(sauce_names.RINGSIDE_ROSIE, 'wet', 'new',
+                                'Flaming Flamingo with a Chili Lime Molasses Rub', [sauce_names.FLAMING_FLAMINGO, sauce_names.ESCOBAR_SEASON])
+    seasoned_vet = ComboSauce(sauce_names.RINGSIDE_ROSIE, 'dry', None,
+                              'Pepper and Seasoned Salt', None)
+    shaolin_strut = ComboSauce(sauce_names.SHAOLIN_STRUT, 'wet', 'new',
+                               'Gung Ho with Mr. C\'s and Honey', [sauce_names.GUNG_HO, sauce_names.MISTER_CS])
+    sheltons_shooters = ComboSauce(sauce_names.SHELTONS_SHOOTERS, 'wet', 'new',
+                                   'Medium Garlic Cajun Parm', [sauce_names.MEDIUM_GARLIC_PARM, sauce_names.CAJUN])
+    showtime = ComboSauce(sauce_names.SHOWTIME, 'buttered', None,
+                          'Salt and Butter', None)
+    steel_city = ComboSauce(sauce_names.STEEL_CITY, 'wet', 'award',
+                            'Mild Buffalo with Ranch Seasoning and Parm', [sauce_names.MILD, sauce_names.RANCH])
+    steiner_recliner = ComboSauce(sauce_names.STEINER_RECLINER, 'wet', 'new',
+                                  'Sweet Jones with Ranch', [sauce_names.SWEET_JONES, sauce_names.RANCH])
+    stickiest = ComboSauce(sauce_names.STICKIEST_OF_THE_ICKY, 'wet', 'sweet',
+                           'Honey and All In Dry', [sauce_names.ALL_IN])
+    still_flossin = ComboSauce(sauce_names.STILL_FLOSSIN, 'buttered', 'sure',
+                               'Buttered Flossin\' Season', [sauce_names.FLOSSIN_SEASON])
+    stupid_rookie = ComboSauce(sauce_names.STUPID_ROOKIE, 'wet', 'new',
+                               'Golden Honey BBQ with Escobar Season', [sauce_names.HONEY_BBQ, sauce_names.GOLD, sauce_names.ESCOBAR_SEASON])
+    sunday_funday = ComboSauce(sauce_names.SUNDAY_FUNDAY, 'buttered', 'new',
+                               'Buttered dry ranch', [sauce_names.RANCH])
+    superfly_tnt = ComboSauce(sauce_names.SUPERFLY_TNT, 'wet', 'hot',
+                              'Hot Jamaican Jerk and Ranch Dressing', [sauce_names.JAMACIAN_FRANK, sauce_names.RANCH])
+    sweet_chin_music = ComboSauce(sauce_names.SWEET_CHIN_MUSIC, 'buttered', 'hot',
+                                  'Buttered Honey with Hot Black Magic', [sauce_names.BLACK_MAGIC])
+    sweet_jones = ComboSauce(sauce_names.SWEET_JONES, 'wet', 'new',
+                             'Honey Escobar Seasoning', [sauce_names.ESCOBAR_SEASON])
+    sweet_lou = ComboSauce(sauce_names.SWEET_LOU, 'wet', 'new',
+                           'Honey Lemon Pepper', [sauce_names.LEMON_PEPPER])
+    talk_of_bf = ComboSauce(sauce_names.TALK_OF_BEAVER_FALLS, 'wet', 'award',
+                            'Hot and Tangy. One of Our Bestsellers', None)
+    three_rivers = ComboSauce(sauce_names.THREE_RIVERS, 'wet', 'classic',
+                              'Honey Mustard, BBQ, and Ranch', [sauce_names.BOBS_HONEY_MUSTARD, sauce_names.BBQ_RANCH])
+    thunderlips = ComboSauce(sauce_names.THUNDERLIPS, 'wet', 'hot',
+                             'Ranch dressing and BSB\'s atomic dust (That isn\'t a listed flavor so...)', [sauce_names.RANCH])
+    too_easy = ComboSauce(sauce_names.TOO_EASY, 'wet', None,
+                          'Salt, Pepper, and Hot Sauce', [sauce_names.FRANKS_RED_HOT])
+    tommy_buns = ComboSauce(sauce_names.TOMMY_BUNS, 'buttered', 'new',
+                            'Jamaican Jerk with Chili Lime', [sauce_names.JAMACIAN_JERK, sauce_names.ESCOBAR_SEASON])
+    trash_talk = ComboSauce(sauce_names.TRASH_TALK, 'wet', 'new',
+                            'Chains adding Black Magic', [sauce_names.CHAINS, sauce_names.BLACK_MAGIC])
+    tremendous_slouch = ComboSauce(sauce_names.TREMENDOUS_SLOUCH, 'dry', 'hot',
+                                   'Hot BBQ Rub', None)
+    troy = ComboSauce(sauce_names.TROY, 'wet', 'new',
+                      'Hot Black and Gold', [sauce_names.BLACK_AND_GOLD])
+    uncle_nicks = ComboSauce(sauce_names.UNCLE_NICKS, 'wet', 'classic',
+                             'Hot Spicy Garlic honey BBQ', [sauce_names.HOT_GARLIC, sauce_names.HONEY_BBQ])
+    uncle_ricos = ComboSauce(sauce_names.UNCLE_RICOS, 'wet', 'sure',
+                             'Sweet Spicy Garlic Honey Mustard', [sauce_names.NAPOLEON_GARLIC, sauce_names.BOBS_HONEY_MUSTARD])
+    velvet_jones = ComboSauce(sauce_names.VELVET_JONES, 'buttered', 'new',
+                              'Buttered Honey Escobar Season', [sauce_names.ESCOBAR_SEASON])
+    walk_of_bf = ComboSauce(sauce_names.WALK_OF_BEAVER_FALLS, 'wet', 'hot',
+                            'Think Talk of Beaver Falls but HOTTER', [sauce_names.TALK_OF_BEAVER_FALLS])
+    walk_of_the_doggs = ComboSauce(sauce_names.WALK_OF_THE_DOGGS, 'wet', 'new',
+                                   'Pookie subbing Walk of Beaver Falls', [sauce_names.POOKIE, sauce_names.PIGEON_WINGS])
+    westview_connection = ComboSauce(sauce_names.WESTVIEW_CONNECTION, 'wet', 'classic',
+                                     'BSB\'s Wet Cajun Garlic with a Green Jalapeno Base', [sauce_names.CAJUN_GARLIC])
+    william_henry_harrison = ComboSauce(sauce_names.WILLIAM_HENRY_HARRISON, 'wet', None,
+                                        'Jamaican Jerk and Parmesian Cheese', [sauce_names.JAMACIAN_JERK])
+    wink_and_gun = ComboSauce(sauce_names.WINK_AND_GUN, 'wet', None,
+                              'Hot, Sweet Ranch', [sauce_names.RANCH])
+    zach_attack = ComboSauce(sauce_names.ZACH_ATTACK, 'wet', 'new',
+                             'Buc Nasty adding Black and Gold', [sauce_names.BUC_NASTY, sauce_names.BLACK_AND_GOLD])
+    ziggy_stardust = ComboSauce(sauce_names.ZIGGY_STARDUST, 'buttered', None,
+                                'Buttered Dry Buffalo with Seasoned Ranch', [sauce_names.NAPOLEON, sauce_names.RANCH])
 
     results = [
         ace_boogie,
