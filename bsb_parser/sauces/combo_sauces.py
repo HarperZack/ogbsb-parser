@@ -1,4 +1,5 @@
 from bsb_parser.sauces import base_sauce, sauce_names
+from bsb_parser.sauces.base_sauce import search_sauce_list
 
 class ComboSauce(base_sauce.BaseSauce):
     def __init__(self, name, consistency, category, description, riffed_sauces):
@@ -6,10 +7,8 @@ class ComboSauce(base_sauce.BaseSauce):
         self.consistency = list()
 
         super().__init__(name, consistency)
-        if consistency == 'wet':
-            self.consistency = consistency.capitalize()
+        self.consistency = consistency.capitalize()
 
-        self.consistency = consistency
         if category == 'hot':
             self.category = 'Hot 🔥'
         if category == 'award':
@@ -32,8 +31,8 @@ class ComboSauce(base_sauce.BaseSauce):
         self.description = description
         self.riffed_sauces = riffed_sauces
 
-    def gather_riffed_sauces(self, sauce):
-        pass
+        self.usable_description = description
+        self.riffed_sauces = riffed_sauces
 
     def show_sauce_stats(self):
         print(f'Name: {self.name}\n'
@@ -42,6 +41,7 @@ class ComboSauce(base_sauce.BaseSauce):
               f'Description: {self.description}\n'
               f'Riffed Sauces: {self.riffed_sauces}\n'
               f'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
+
 
 
 def create_combo_sauces_list():
@@ -132,7 +132,7 @@ def create_combo_sauces_list():
     g_black = ComboSauce(sauce_names.G_BLACK, 'buttered', 'new',
                          'Black Magic with Garlic', [sauce_names.BLACK_MAGIC])
     gamechanger = ComboSauce(sauce_names.GAMECHANGER, 'wet', 'pop',
-                             'Butter, Seasonings and Parm with Ranch', [sauce_names.BUTTER_SS, sauce_names.PEPPERCORN_RANCH_PARM]),
+                             'Butter, Seasonings and Parm with Ranch', [sauce_names.BUTTER_SS, sauce_names.PEPPERCORN_RANCH_PARM])
     general_tsos = ComboSauce(sauce_names.GENERAL_TSOS, 'wet', None,
                               'Traditional Asian Sauce', None)
     gold_fire = ComboSauce(sauce_names.GOLD_FIRE, 'wet', 'hot',
@@ -420,8 +420,24 @@ def create_combo_sauces_list():
 
     return results
 
+def gather_riffed_sauces(sauce):
+    all_riffed_sauces = list()
+    primary_description = sauce.description
+
+    if sauce.riffed_sauces is not None:
+        for additional_sauce in sauce.riffed_sauces:
+            all_riffed_sauces.append(additional_sauce)
+            for extra in all_riffed_sauces:
+                search_sauce_list(extra)
+                print('more')
+    print(all_riffed_sauces)
+    sauce.description = f'{sauce.description}. Includes {all_riffed_sauces}'
+    print(sauce.description)
+    return 'test 1'
 
 if __name__ == '__main__':
     combo_sauces_list = create_combo_sauces_list()
-    test = base_sauce.search_sauce_list(sauce_names.ASHY_LARRY, combo_sauces_list)
+    test = base_sauce.search_sauce_list(sauce_names.GAMECHANGER, combo_sauces_list)
     test.show_sauce_stats()
+
+    gather_riffed_sauces(test)
