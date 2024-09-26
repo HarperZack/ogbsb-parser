@@ -1,3 +1,5 @@
+from asyncio import gather
+
 from bsb_parser.sauces import base_sauce, sauce_names
 from bsb_parser.sauces.base_sauce import search_sauce_list
 
@@ -218,7 +220,7 @@ def create_combo_sauces_list():
     polish_hill_strangler = ComboSauce(sauce_names.POLISH_HILL_STRANGLER, 'wet', 'hot',
                                        'Honey Mustard and Cayenne Pepper', [sauce_names.BOBS_HONEY_MUSTARD])
     pookie = ComboSauce(sauce_names.POOKIE, 'wet', 'classic',
-                        'Talk of Beaver Falls and Pigeon', [sauce_names.TALK_OF_BEAVER_FALLS, sauce_names.PIGEON_WINGS])
+                        'Talk of Beaver Falls and Pigeon Wings', [sauce_names.TALK_OF_BEAVER_FALLS, sauce_names.PIGEON_WINGS])
     primadonna = ComboSauce(sauce_names.PRIMADONNA, 'wet', 'sure',
                             'Ranch Buffalo Mildly Seasoned', [sauce_names.RANCH])
     primetime = ComboSauce(sauce_names.PRIMETIME, 'classic', 'wet',
@@ -423,22 +425,31 @@ def create_combo_sauces_list():
 COMBO_SAUCE_LIST = create_combo_sauces_list()
 
 def gather_riffed_sauces(sauce):
-    all_riffed_sauces = list()
-    primary_description = sauce.description
+    all_riffed_sauces = sauce.riffed_sauces
+    references = list()
 
-    if sauce.riffed_sauces is not None:
-        for additional_sauce in sauce.riffed_sauces:
-            all_riffed_sauces.append(additional_sauce)
-            for extra in all_riffed_sauces:
-                search_sauce_list(extra, COMBO_SAUCE_LIST)
-                print('more')
-    print(all_riffed_sauces)
-    sauce.description = f'{sauce.description}. Includes {all_riffed_sauces}'
-    print(sauce.description)
-    return 'test 1'
+    # Searching for string references and creating list of sauce objects
+    while len(all_riffed_sauces) != 0:
+        for additional_sauce in all_riffed_sauces:
+            # Search isn't finding Napoleoon, but DOES do the search and repopulate list. Why???
+            new_sauce = search_sauce_list(additional_sauce, COMBO_SAUCE_LIST)
+            if new_sauce.riffed_sauces is not None:
+                all_riffed_sauces.append(new_sauce.riffed_sauces)
+            references.append(new_sauce)
+
+            all_riffed_sauces.pop(0)
+    for entry in references:
+        if entry.riffed_sauces is not None:
+            print('Found the extra')
+        readable_description = sauce.description.replace(entry.name, entry.description)
+        sauce.description = readable_description
+        print(readable_description)
+
+    return sauce
 
 if __name__ == '__main__':
     test = base_sauce.search_sauce_list(sauce_names.GAMECHANGER, COMBO_SAUCE_LIST)
     test.show_sauce_stats()
 
     gather_riffed_sauces(test)
+
