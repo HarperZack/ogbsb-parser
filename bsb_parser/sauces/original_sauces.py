@@ -119,11 +119,10 @@ def create_original_sauces_list():
 
     return results
 
+ORIGINAL_SAUCE_LIST = create_original_sauces_list()
 
 if __name__ == '__main__':
-    original_sauces_list = create_original_sauces_list()
-
-    test = base_sauce.search_sauce_list(sauce_names.BOBS_HONEY_MUSTARD, original_sauces_list)
+    test = base_sauce.search_sauce_list(sauce_names.BOBS_HONEY_MUSTARD, ORIGINAL_SAUCE_LIST)
     print(sauce_names.BOBS_HONEY_MUSTARD)
     test.show_sauce_stats()
 

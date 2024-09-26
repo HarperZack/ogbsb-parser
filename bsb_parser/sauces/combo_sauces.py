@@ -420,6 +420,8 @@ def create_combo_sauces_list():
 
     return results
 
+COMBO_SAUCE_LIST = create_combo_sauces_list()
+
 def gather_riffed_sauces(sauce):
     all_riffed_sauces = list()
     primary_description = sauce.description
@@ -428,7 +430,7 @@ def gather_riffed_sauces(sauce):
         for additional_sauce in sauce.riffed_sauces:
             all_riffed_sauces.append(additional_sauce)
             for extra in all_riffed_sauces:
-                search_sauce_list(extra)
+                search_sauce_list(extra, COMBO_SAUCE_LIST)
                 print('more')
     print(all_riffed_sauces)
     sauce.description = f'{sauce.description}. Includes {all_riffed_sauces}'
@@ -436,8 +438,7 @@ def gather_riffed_sauces(sauce):
     return 'test 1'
 
 if __name__ == '__main__':
-    combo_sauces_list = create_combo_sauces_list()
-    test = base_sauce.search_sauce_list(sauce_names.GAMECHANGER, combo_sauces_list)
+    test = base_sauce.search_sauce_list(sauce_names.GAMECHANGER, COMBO_SAUCE_LIST)
     test.show_sauce_stats()
 
     gather_riffed_sauces(test)
