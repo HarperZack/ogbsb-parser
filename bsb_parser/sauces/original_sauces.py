@@ -3,6 +3,8 @@ from bsb_parser.sauces import base_sauce, sauce_names
 class OriginalSauce(base_sauce.BaseSauce):
     def __init__(self, name, consistency='wet'):
         super().__init__(name, consistency)
+        self.riffed_sauces = None
+        self.is_original = True
 
     def show_sauce_stats(self):
         print(f'Name: {self.name}\n'

@@ -1,11 +1,14 @@
-from asyncio import gather
+from copy import deepcopy
 
 from bsb_parser.sauces import base_sauce, sauce_names
 from bsb_parser.sauces.base_sauce import search_sauce_list
+from bsb_parser.sauces.original_sauces import ORIGINAL_SAUCE_LIST
+
 
 class ComboSauce(base_sauce.BaseSauce):
     def __init__(self, name, consistency, category, description, riffed_sauces):
         self.name = name
+        self.is_original = False
         self.consistency = list()
 
         super().__init__(name, consistency)
@@ -425,31 +428,48 @@ def create_combo_sauces_list():
 COMBO_SAUCE_LIST = create_combo_sauces_list()
 
 def gather_riffed_sauces(sauce):
-    all_riffed_sauces = sauce.riffed_sauces
+    # This is popping off from the sauce object rather than the variable
+    all_riffed_sauces = deepcopy(sauce.riffed_sauces)
     references = list()
 
     # Searching for string references and creating list of sauce objects
     while len(all_riffed_sauces) != 0:
         for additional_sauce in all_riffed_sauces:
-            # Search isn't finding Napoleoon, but DOES do the search and repopulate list. Why???
+            is_original = False
             new_sauce = search_sauce_list(additional_sauce, COMBO_SAUCE_LIST)
-            if new_sauce.riffed_sauces is not None:
+            # Triggers for original sauces
+            if new_sauce is None:
+                new_sauce = search_sauce_list(additional_sauce, ORIGINAL_SAUCE_LIST)
+                is_original = True
+            # Triggers for combo sauces with riffed sauces
+            if is_original is False and new_sauce.riffed_sauces is not None:
                 all_riffed_sauces.append(new_sauce.riffed_sauces)
-            references.append(new_sauce)
+                references.append(new_sauce)
+                all_riffed_sauces.pop(0)
+            # Catch all for weird ones; won't throw errors
+            else:
+                references.append(new_sauce)
+                all_riffed_sauces.pop(0)
 
-            all_riffed_sauces.pop(0)
     for entry in references:
+        # Throws in descriptions on combo sauces
         if entry.riffed_sauces is not None:
-            print('Found the extra')
-        readable_description = sauce.description.replace(entry.name, entry.description)
-        sauce.description = readable_description
-        print(readable_description)
+            readable_description = sauce.description.replace(entry.name, entry.description)
+            sauce.description = readable_description
+        # Adds description in on un-riffed flavors
+        if entry.is_original is True:
+            sauce.description = f'{sauce.description} with {entry.name}'
+        # Catches originals
+        if entry.is_original is False:
+            sauce.description = f'{sauce.description} with {entry.name}'
 
+    sauce.description = f'{sauce.description}.'
     return sauce
 
 if __name__ == '__main__':
     test = base_sauce.search_sauce_list(sauce_names.GAMECHANGER, COMBO_SAUCE_LIST)
-    test.show_sauce_stats()
+    # test.show_sauce_stats()
 
-    gather_riffed_sauces(test)
+    new_sauce = gather_riffed_sauces(test)
+    new_sauce.show_sauce_stats()
 
